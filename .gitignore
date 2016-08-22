@@ -1,2 +1,5 @@
 # VSCode stuff
 .BROWSE.VC*
+
+# Python stuff
+*.pyc
