@@ -1,7 +1,5 @@
-#define CATCH_CONFIG_MAIN
 #include "solution.hpp"
-#include "../Catch/single_include/catch.hpp"
-
+#include "../tools/header.hpp"
 
 TEST_CASE( "Power Of Two are tested", "[isPowerOfTwo]" ) {
     Solution s;
