@@ -4,6 +4,7 @@ import os.path
 import subprocess
 
 CC = 'g++'
+CFLAGS = '-std=c++11'
 UNITTEST = 'TEST.cpp'
 TARGET = 'target'
 
@@ -19,9 +20,13 @@ def build_map():
     return qmap
 
 
-def test_program(question_id=0):
+def test_program(question_id=0, use_catch_framework=False):
     cwd = qmap[question_id]
-    subprocess.call([CC, UNITTEST, '-o', TARGET, '-std=c++11'], cwd=cwd)
+    compile_cmds = [CC, UNITTEST, '-o', TARGET, CFLAGS]
+    if use_catch_framework:
+        compile_cmds += ['-DCATCH_TEST']
+
+    subprocess.call(compile_cmds, cwd=cwd)
     subprocess.call(['./%s' % TARGET], cwd=cwd)
     subprocess.call(['rm', TARGET], cwd=cwd)
 
