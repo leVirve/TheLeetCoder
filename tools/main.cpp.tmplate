@@ -10,8 +10,7 @@ using namespace std;
 int main()
 {{
     Solution sol;
-    string output;
-    output = sol.{solution_name}("{input}");
-    assert(output == "{output}");
-    cout << output << endl;
+    auto result = sol.{solution_name}({input});
+    assert(result == {output});
+    cout << result << endl;
 }}

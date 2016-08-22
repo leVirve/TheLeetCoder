@@ -14,6 +14,6 @@ def gen_code(**params):
 
 
 def run_program():
-    subprocess.call([CC, SOURCE, '-o', TARGET])
+    subprocess.call([CC, SOURCE, '-o', TARGET, '-std=c++11'])
     subprocess.call(['./%s' % TARGET])
     subprocess.call(['rm', TARGET, SOURCE])
