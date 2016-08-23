@@ -32,8 +32,9 @@ def gen(question_name):
 
 
 @click.command()
+@click.option('--catch', '-c', is_flag=True)
 @click.argument('question_id')
-def test(question_id, use_catch_framework=False):
+def test(question_id, catch):
     click.echo('Test Start...')
 
     qmap = build_map()
@@ -44,7 +45,7 @@ def test(question_id, use_catch_framework=False):
         return subprocess.call(args, cwd=cwd)
 
     compile_cmd = [CC, UNITTEST, '-o', TARGET, CFLAGS]
-    if use_catch_framework:
+    if catch:
         compile_cmd += ['-DCATCH_TEST']
 
     not run_command(compile_cmd) and run_command(['./%s/%s' % (cwd, TARGET)])
