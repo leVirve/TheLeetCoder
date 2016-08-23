@@ -23,14 +23,13 @@ def test_program(question_id=0, use_catch_framework=False):
     cwd = qmap[question_id]
 
     def run_command(args):
-        subprocess.call(args, cwd=cwd)
+        return subprocess.call(args, cwd=cwd)
 
     compile_cmd = [CC, UNITTEST, '-o', TARGET, CFLAGS]
     if use_catch_framework:
         compile_cmd += ['-DCATCH_TEST']
 
-    run_command(compile_cmd)
-    run_command(['./%s' % TARGET])
+    not run_command(compile_cmd) and run_command(['./%s' % TARGET])
     run_command(['rm', TARGET])
 
 qmap = build_map()
