@@ -25,7 +25,7 @@ public:
 
 /** 231. Power of Two/TEST.cpp **/
 #include "solution.hpp"
-#include "../tools/header.hpp"
+#include "../framework/header.hpp"
 
 TEST_CASE( "Power Of Two are tested", "[isPowerOfTwo]" ) {
     Solution s;
@@ -54,7 +54,7 @@ $ ./run.py $id catch
 
 ## Example
 ```bash
-$  ./run.py 221 catch     
+$  ./run.py 231 catch     
 
 ==============================================      
 All tests passed (5 assertions in 1 test case)  

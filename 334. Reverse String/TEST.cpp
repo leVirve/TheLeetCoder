@@ -1,4 +1,4 @@
-#include "../tools/header.hpp"
+#include "../framework/header.hpp"
 #include "solution.hpp"
 
 TEST_CASE( "Solution tested", "[reverseString]" ) {

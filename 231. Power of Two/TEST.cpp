@@ -1,5 +1,5 @@
 #include "solution.hpp"
-#include "../tools/header.hpp"
+#include "../framework/header.hpp"
 
 TEST_CASE( "Power Of Two are tested", "[isPowerOfTwo]" ) {
     Solution s;
