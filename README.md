@@ -29,16 +29,7 @@ Checkout the branch [framework](https://github.com/leVirve/TheLeetCoder/tree/fra
 
 ## Example
 
-- One simple command
-
-    ```bash
-    $  ./run.py test 231 --catch     
-
-        ==============================================      
-        All tests passed (5 assertions in 1 test case)  
-    ```
-
-- Each question is strtucured in folders:
+- Each question in project should strtucured like:
 
     ```
     $id. $question_title
@@ -78,4 +69,13 @@ Checkout the branch [framework](https://github.com/leVirve/TheLeetCoder/tree/fra
         REQUIRE( s.isPowerOfTwo(10) == false );
     }
 
+    ```
+
+- Test it with one-line !
+
+    ```bash
+    $ ./run.py test 231 --catch     
+
+      ================================================   
+        All tests passed (5 assertions in 1 test case)  
     ```
