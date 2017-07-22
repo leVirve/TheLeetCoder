@@ -5,7 +5,7 @@ import os
 import shutil
 import subprocess
 
-CC = 'g++'
+CC = 'clang++'
 CFLAGS = '-std=c++11'
 UNITTEST = 'TEST.cpp'
 TARGET = 'target'
@@ -35,20 +35,25 @@ def gen(question_name):
 @click.option('--catch', '-c', is_flag=True)
 @click.argument('question_id')
 def test(question_id, catch):
-    click.echo('Test Start...')
+    print('==> Testing on #' + question_id)
 
     qmap = build_map()
-    cwd = qmap[question_id]
+    cwd = qmap[re.search('(\d+)', question_id).group(1)]
 
     def run_command(args):
-        print(args)
         return subprocess.call(args, cwd=cwd)
 
     compile_cmd = [CC, UNITTEST, '-o', TARGET, CFLAGS]
     if catch:
         compile_cmd += ['-DCATCH_TEST']
 
-    not run_command(compile_cmd) and run_command(['./%s/%s' % (cwd, TARGET)])
+    print('==> Compiling ...')
+    ret = run_command(compile_cmd)
+    if not ret:
+        print('==> Running ...')
+        run_command(['./%s' % (TARGET)])
+
+    print('==> Delete output.')
     run_command(['rm', TARGET])
 
 
