@@ -1,0 +1,40 @@
+{
+    "version": "0.1.0",
+    "isShellCommand": true,
+    "windows": {
+        "command": "c:/Windows/System32/bash.exe"
+    },
+    "linux": {
+        "command": "sh"
+    },
+    "osx": {
+        "command": "sh"
+    },
+    "args": ["-c"],
+    "showOutput": "always",
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "echo",
+            "args": ["echo \"${relativeFile}\""]
+        },
+        {
+            "taskName": "lcf.py",
+            // "isBuildCommand": true,
+            "args": ["./run.py test \"${relativeFile}\" --catch"]
+        },
+        {
+            "taskName": "clang",
+            "isBuildCommand": true,
+            "args": ["clang++ ${relativeFile} -o ${relativeFile}.o && ./${relativeFile}.o"]
+        },
+        {
+            "taskName": "gcc",
+            "args": ["g++ ${relativeFile} -o ${relativeFile}.o && ./${relativeFile}.o"]
+        },
+        {
+            "taskName": "make clean",
+            "args": ["make clean WORKDIR=${fileDirname}"]
+        }
+    ]
+}

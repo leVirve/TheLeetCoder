@@ -1,5 +1,10 @@
 {
     "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
     "terminal.integrated.lineHeight": 1.25,
-    "terminal.integrated.shell.windows": "c:/Windows/sysnative/bash.exe"
+    "terminal.integrated.shell.windows": "c:/Windows/System32/bash.exe",
+    "files.associations": {
+        "*.m": "matlab",
+        "*.cu": "cpp",
+        "xstring": "cpp"
+    }
 }
