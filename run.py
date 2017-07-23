@@ -33,8 +33,9 @@ def gen(question_name):
 
 @click.command()
 @click.option('--catch', '-c', is_flag=True)
+@click.option('--lang_c', is_flag=True)
 @click.argument('question_id')
-def test(question_id, catch):
+def test(question_id, catch, lang_c):
     print('==> Testing on #' + question_id)
 
     qmap = build_map()
@@ -46,6 +47,8 @@ def test(question_id, catch):
     compile_cmd = [CC, UNITTEST, '-o', TARGET, CFLAGS]
     if catch:
         compile_cmd += ['-DCATCH_TEST']
+    if lang_c:
+        compile_cmd += ['-DC_SOLUTION']
 
     print('==> Compiling ...')
     ret = run_command(compile_cmd)
