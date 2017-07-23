@@ -1,4 +1,4 @@
-#LeetCoder Framework
+# LeetCoder Framework
 
 :sweat_drops:　Write your code and test them happily with full unit test features!　:sweat_drops:
 
@@ -27,21 +27,22 @@
 Checkout the branch [framework](https://github.com/leVirve/TheLeetCoder/tree/framework)  :facepunch:
 
 
-## Example
+## Usage
 
-- Each question in project should strtucured like:
+- Generate template for question with command:
+
+
+    ```bash
+    $ ./run.py gen "231. Power of Two/solution"
+    ```
+
+    - The name of questionmust contain question id. And the structure looks like:
 
     ```
     $id. $question_title
     ├──  solution.hpp    # My LeetCode solution
     └──  TEST.cpp        # Testcases
     ```
-
-    - You can generate this structure through command
-
-        ```bash
-        $ ./run.py gen "231. Power of Two/solution"
-        ```
 
 - Now. Write Your Code !
 
@@ -74,8 +75,11 @@ Checkout the branch [framework](https://github.com/leVirve/TheLeetCoder/tree/fra
 - Test it with one-line !
 
     ```bash
-    $ ./run.py test 231 --catch     
+    $ ./run.py test 231 --catch
 
-      ================================================   
-        All tests passed (5 assertions in 1 test case)  
+    ==> Testing on #231
+    ==> Compiling ...
+    ==> Running ...
+    ===============================================================================
+    All tests passed (5 assertions in 1 test case)
     ```
