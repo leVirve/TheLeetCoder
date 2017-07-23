@@ -10,16 +10,15 @@
     $ ./run.py test $id --catch
     ```
 
-- If need quick and simple unit-test
+- If need quick and simple unit-test (only one testcase)
 
-    *Use it carefully* :joy: , and read the [soure](/framework/header.hpp#L10).
 
     ```bash
     $ ./run.py test $id
     ```
 
-    It's composed of simple marcos and has less functions than `Catch`, I use this for quick compilation and tuning.
-    If you're sure your code won't get any segmantation fault or anything may causes core dump.
+    *Use it carefully* :joy: , and read the [soure](/framework/header.hpp#L12).
+    It's composed of simple marcos and has less functions than `Catch`, use this for quick compilation and tuning.
 
 
 ## Usage
