@@ -22,11 +22,6 @@
     If you're sure your code won't get any segmantation fault or anything may causes core dump.
 
 
-## Get the framework
-
-Checkout the branch [framework](https://github.com/leVirve/TheLeetCoder/tree/framework)  :facepunch:
-
-
 ## Usage
 
 - Generate template for question with command:
