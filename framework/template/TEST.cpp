@@ -2,20 +2,14 @@
 
 #ifdef C_SOLUTION
 #include "solution.h"
+#define SOLVE(...) solver_name(__VA_ARGS__)
 #else
 #include "solution.hpp"
+Solution s;
+#define SOLVE(...) s.solver_name(__VA_ARGS__)
 #endif
 
-return_type solve(input_type input) {
-#ifdef C_SOLUTION
-    return function_name(input);
-#else
-    Solution s;
-    return s.function_name(input);
-#endif
-}
 
-
-TEST_CASE( "Testcase doc string", "[case name]" ) {
-    REQUIRE( solve(input) == output );
+TEST_CASE( "Testcase_doc_string", "[solver_name]" ) {
+    REQUIRE( SOLVE(input) == output );
 }
