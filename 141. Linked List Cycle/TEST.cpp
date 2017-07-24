@@ -1,37 +1,14 @@
 #include "../framework/header.hpp"
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
+#include "../framework/utils/list.hpp"
 
 #ifdef C_SOLUTION
 #include "solution.h"
+#define SOLVE(...) hasCycle(__VA_ARGS__)
 #else
 #include "solution.hpp"
+Solution s;
+#define SOLVE(...) s.hasCycle(__VA_ARGS__)
 #endif
-
-bool solve(ListNode* a) {
-#ifdef C_SOLUTION
-    return hasCycle(a);
-#else
-    Solution s;
-    return s.hasCycle(a);
-#endif
-}
-
-
-template <size_t N>
-ListNode* create_list(int (&arr)[N])
-{
-    ListNode *node = new ListNode(arr[0]);
-    ListNode *p = node;
-    for (int i = 1; i < N; ++i, p = p->next)
-        p->next = new ListNode(arr[i]);
-    return node;
-}
-
 
 TEST_CASE( "has cycle [1, 2, 3, 4, 5, 6, 7, 8, 9]", "[hasCycle]" ) {
     int l1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -42,8 +19,8 @@ TEST_CASE( "has cycle [1, 2, 3, 4, 5, 6, 7, 8, 9]", "[hasCycle]" ) {
     while (p->next) p = p->next;
     p->next = in2;
 
-    REQUIRE( solve(in1) == false );
-    REQUIRE( solve(in2) == true );
+    REQUIRE( SOLVE(in1) == false );
+    REQUIRE( SOLVE(in2) == true );
 }
 
 
@@ -56,6 +33,6 @@ TEST_CASE( "has cycle [1, 2, 3, 4]", "[hasCycle]" ) {
     while (p->next) p = p->next;
     p->next = in2;
 
-    REQUIRE( solve(in1) == false );
-    REQUIRE( solve(in2) == true );
+    REQUIRE( SOLVE(in1) == false );
+    REQUIRE( SOLVE(in2) == true );
 }

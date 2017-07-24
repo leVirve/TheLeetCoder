@@ -1,45 +1,14 @@
 #include "../framework/header.hpp"
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
+#include "../framework/utils/list.hpp"
 
 #ifdef C_SOLUTION
 #include "solution.h"
+#define SOLVE(...) addTwoNumbers(__VA_ARGS__)
 #else
 #include "solution.hpp"
+Solution s;
+#define SOLVE(...) s.addTwoNumbers(__VA_ARGS__)
 #endif
-
-ListNode* solve(ListNode* a, ListNode* b) {
-#ifdef C_SOLUTION
-    return addTwoNumbers(a, b);
-#else
-    Solution s;
-    return s.addTwoNumbers(a, b);
-#endif
-}
-
-
-template <size_t N>
-ListNode* create_list(int (&arr)[N])
-{
-    ListNode *node = new ListNode(arr[0]);
-    ListNode *p = node;
-    for (int i = 1; i < N; ++i, p = p->next)
-        p->next = new ListNode(arr[i]);
-    return node;
-}
-
-
-bool is_equal(ListNode* p, ListNode* q)
-{
-    for (; p && q; p = p->next, q = q->next)
-        if (p->val != q->val) return false;
-    return p == q;
-}
-
 
 TEST_CASE( "add two numbers [243]+[564]", "[addTwoNumbers]" ) {
     int l1[] = {2, 4, 3},
@@ -49,7 +18,7 @@ TEST_CASE( "add two numbers [243]+[564]", "[addTwoNumbers]" ) {
              *b = create_list(l2),
              *c = create_list(l3);
 
-    REQUIRE( is_equal(solve(a, b), c) );
+    REQUIRE( is_equal(SOLVE(a, b), c) );
 }
 
 TEST_CASE( "add two numbers [0]+[1,8]", "[addTwoNumbers]" ) {
@@ -60,7 +29,7 @@ TEST_CASE( "add two numbers [0]+[1,8]", "[addTwoNumbers]" ) {
              *b = create_list(l2),
              *c = create_list(l3);
 
-    REQUIRE( is_equal(solve(a, b), c) );
+    REQUIRE( is_equal(SOLVE(a, b), c) );
 }
 
 TEST_CASE( "add two numbers [9]+[1,9,9,9,9,9,9,9,9,9]", "[addTwoNumbers]" ) {
@@ -71,7 +40,7 @@ TEST_CASE( "add two numbers [9]+[1,9,9,9,9,9,9,9,9,9]", "[addTwoNumbers]" ) {
              *b = create_list(l2),
              *c = create_list(l3);
 
-    REQUIRE( is_equal(solve(a, b), c) );
+    REQUIRE( is_equal(SOLVE(a, b), c) );
 }
 
 TEST_CASE( "add two numbers [5]+[5]", "[addTwoNumbers]" ) {
@@ -80,5 +49,5 @@ TEST_CASE( "add two numbers [5]+[5]", "[addTwoNumbers]" ) {
              *b = create_list(l2),
              *c = create_list(l3);
 
-    REQUIRE( is_equal(solve(a, b), c) );
+    REQUIRE( is_equal(SOLVE(a, b), c) );
 }
